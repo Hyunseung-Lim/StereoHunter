@@ -1,0 +1,65 @@
+@font-face {
+  font-family: "HSUG";
+  src: url("../../Font/HS유지체.ttf") format("truetype");
+  font-weight: normal;
+}
+
+
+.navbar {
+  width: 100vw;
+  z-index: 1;
+  background-color: #242424;
+  color: white;
+  height: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.tools {
+  margin-left: 20px;
+}
+
+.cursorIcon {
+  height: 18px;
+  margin-right: 20px;
+}
+
+.penIcon {
+  height: 18px;
+}
+
+.submitBtn {
+  border-radius: 4px;
+  padding: 6px 10px;
+  font-size: 14px;
+  background-color: #00B7A1;
+  color: white;
+  margin: 0 20px;
+}
+
+.mainNavbar {
+  position: fixed;
+  top: 0;
+  width: 100vw;
+  z-index: 1;
+  background-color: #242424;
+  color: white;
+  height: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.mainNavbar > .navbarContainer {
+  width: 1080px;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.navbarContainer > .title {
+  font-size: 20px;
+  font-family: 'HSUG';
+}

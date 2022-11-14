@@ -1,24 +1,36 @@
-import logo from './logo.svg';
+import {
+  BrowserRouter as Router,
+  Navigate,
+  Route,
+  Routes,
+} from 'react-router-dom';
+import { MainPage } from './Pages/MainPage';
+import { LoginPage } from './Pages/LoginPage';
+import { ManagePage } from './Pages/ManagePage';
+
+import useToken from './Components/useToken';
 import './App.css';
 
 function App() {
+
+  const { token, removeToken, setToken } = useToken();
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Router>
+      <div className='App' id='app__wrap'>
+        {!token && token!=="" &&token!== undefined?
+          <LoginPage setToken={setToken}/>
+          :
+          <>
+            <Routes>
+              <Route path='/' element={<MainPage token={token} setToken={setToken} removeToken={removeToken}/>} />
+              {/* <Route path='/play' element={<PlayPage token={token} setToken={setToken}/>} /> */}
+              <Route path='/manage' element={<ManagePage/>}/>
+            </Routes>
+          </>
+        }
+      </div>
+    </Router>
   );
 }
 
