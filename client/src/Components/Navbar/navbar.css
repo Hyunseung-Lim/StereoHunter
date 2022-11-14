@@ -4,31 +4,6 @@
   font-weight: normal;
 }
 
-
-.navbar {
-  width: 100vw;
-  z-index: 1;
-  background-color: #242424;
-  color: white;
-  height: 50px;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-}
-
-.tools {
-  margin-left: 20px;
-}
-
-.cursorIcon {
-  height: 18px;
-  margin-right: 20px;
-}
-
-.penIcon {
-  height: 18px;
-}
-
 .submitBtn {
   border-radius: 4px;
   padding: 6px 10px;
@@ -39,9 +14,7 @@
 }
 
 .mainNavbar {
-  position: fixed;
-  top: 0;
-  width: 100vw;
+  width: 100%;
   z-index: 1;
   background-color: #242424;
   color: white;
@@ -52,14 +25,14 @@
 }
 
 .mainNavbar > .navbarContainer {
-  width: 1080px;
-
+  width: 100%;
   display: flex;
   align-items: center;
   justify-content: space-between;
 }
 
 .navbarContainer > .title {
+  margin-left: 20px;
   font-size: 20px;
   font-family: 'HSUG';
 }

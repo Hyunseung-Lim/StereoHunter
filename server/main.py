@@ -89,56 +89,9 @@ def logout():
 def profile():
     user = User.query.filter_by(email=get_jwt_identity()).first()
     name = user.name
-    books = Book.query.all()
-    books_data = []
-    for book in books:
-        book_data = {
-            "num": book.num,
-            "name": book.name,
-            "bookData": book.bookData
-        }
-        books_data.append(book_data)
-    response = jsonify({"name": name, "books": books_data})
+    response = jsonify({"name": name})
     return response
 
-@main.route("/resetbook", methods=["POST"])
-@cross_origin()
-def resetbook():
-    db.session.query(Book).delete()
-    params = request.get_json()
-    book1Data = params['book1']
-    book2Data = params['book2']
-    new_book1 = Book(
-        num = 1,
-        name = 'book1',
-        bookData = book1Data
-    )
-    new_book2 = Book(
-        num = 2,
-        name = 'book2',
-        bookData = book2Data
-    )
-    db.session.add(new_book1)
-    db.session.add(new_book2)
-    db.session.commit()
-    return {"msg": "reset book successful"}
-
-@main.route("/updatebook", methods=["POST"])
-@cross_origin()
-def updatebook():
-    params = request.get_json()
-    bookNum = params['bookNum']
-    bookData = params['bookData']
-    book = Book.query.filter_by(num=bookNum).first()
-    book.bookData = bookData
-    db.session.commit()
-    return {"msg": "update book successful"}
-
-
-
-# @main.route("/book")
-# @jwt_required()
-# def book():
     
     
 

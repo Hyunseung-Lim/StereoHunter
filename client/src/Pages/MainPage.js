@@ -3,11 +3,10 @@ import { Link } from 'react-router-dom'
 import axios from "axios"
 
 import { MainNavbar } from '../Components/Navbar/mainNavbar';
+import { Historybar } from '../Components/Historybar/historybar';
 
 export const MainPage = (props) => {
-  const [userName, setUserName] = useState(null);
   const [profileData, setProfileData] = useState({'name':null})
-  const [booksData, setBooksData] = useState([{'num':null, 'name':null, 'bookData':null}, {'num':null, 'name':null, 'bookData':null}])
 
   function getData() {
     axios({
@@ -23,7 +22,6 @@ export const MainPage = (props) => {
       setProfileData(({
         name: res.name
       }))
-      setBooksData(res.books)
     }).catch((error) => {
       if (error.response) {
         console.log(error.response)
@@ -39,11 +37,16 @@ export const MainPage = (props) => {
 
   return (
     <div className='mainPage'>
-      <MainNavbar
-        name={profileData.name}
-        removeToken={props.removeToken}
-      />
-      <div className='mainPageTitle'>읽고 싶은 책을 선택해주세요.</div>
+      <MainNavbar name={profileData.name} removeToken={props.removeToken}/>
+      <div className='container'>
+        <div className='playContents'>
+          <div className='inputWindow'>
+            <div className='inputWindowTitle'>상황을 입력해주세요.</div>
+            <input className='input'></input>
+          </div>
+        </div>
+        <Historybar/>        
+      </div>
     </div>
   );
 };

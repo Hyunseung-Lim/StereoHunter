@@ -1,6 +1,5 @@
 import {
   BrowserRouter as Router,
-  Navigate,
   Route,
   Routes,
 } from 'react-router-dom';
@@ -24,7 +23,6 @@ function App() {
           <>
             <Routes>
               <Route path='/' element={<MainPage token={token} setToken={setToken} removeToken={removeToken}/>} />
-              {/* <Route path='/play' element={<PlayPage token={token} setToken={setToken}/>} /> */}
               <Route path='/manage' element={<ManagePage/>}/>
             </Routes>
           </>
