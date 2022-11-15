@@ -6,15 +6,13 @@ class User(UserMixin, db.Model):
     email = db.Column(db.String(100), unique=True)
     password = db.Column(db.String(100))
     name = db.Column(db.String(1000))
-    photo = db.Column(db.String(1000))
-    posts = db.Column(db.Integer)
 
-class Book(db.Model):
+class Log(db.Model):
     id = db.Column(db.Integer, primary_key=True) # primary keys are required by SQLAlchemy
-    num = db.Column(db.Integer)
-    name = db.Column(db.String(1000))
-    bookData = db.Column(db.JSON)
-    
+    user_id = db.Column(db.Integer, db.ForeignKey('user.id'), nullable=False)
+    input = db.Column(db.String(1000))
+    output = db.Column(db.String(1000))
+
 # class Post(db.Model):
 #     id = db.Column(db.Integer, primary_key=True) # primary keys are required by SQLAlchemy
 #     post_num = db.Column(db.Integer)

@@ -1,7 +1,49 @@
 .historybar {
-    height: 100%;
-    background-color: #F4F4F4;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-  }
+  display: flex;
+  padding: 30px 10px 30px 20px;
+  background-color: #F4F4F4;
+  flex-direction: column;
+  align-items: center;
+  overflow: scroll;
+  overflow-x:hidden; 
+  overflow-y:auto; 
+}
+
+.historybar > .title {
+  width: 100%;
+  text-align: left;
+  font-size: 20px;
+  font-weight: 700;
+  margin-bottom: 10px;
+}
+
+.histories {
+  display: flex;
+  overflow: scroll;
+  overflow-x:hidden; 
+  overflow-y:auto; 
+  flex-direction: column;
+  width: 100%;
+}
+
+.history {
+  width: 100%;
+  padding: 0 10px 10px 0;
+  border-bottom: solid 1px #CDCDCD;
+}
+
+.history > .situation {
+  margin-top: 10px;
+  width: 100%;
+  text-align: left;
+  font-size: 12px;
+}
+
+.history > .dialoge {
+  margin-top: 5px;
+  width: 100%;
+  text-align: left;
+  font-size: 12px;
+  padding: 5px 10px;
+  border-radius: 5px;
+}
