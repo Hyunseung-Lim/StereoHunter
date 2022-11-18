@@ -45,12 +45,22 @@
   padding: 9px 8px 7px 12px;
 }
 
+.outputWindow {
+  display: flex;
+  max-width: 60%;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
 .situation {
+  width: 100%;
   margin-top: 10px;
   font-size: 14px;
 }
 
 .dialoge {
+  width: 100%;
   background-color: white;
   margin-top: 10px;
   padding: 20px 40px 20px 40px;
@@ -60,4 +70,26 @@
   font-family: 'Noto Serif KR';
   font-weight: 700;
   font-size: 20px;
+}
+
+.stereoEvaluation {
+  width: 100%;
+}
+
+.stereoChecker {
+  display: grid;
+  width: 40%;
+  height: 200px;
+  margin: auto;
+  font-size: 1px;
+  
+}
+
+.stereoBtn {
+  margin: 5px;
+}
+
+.stereoBtn:nth-child(3) {
+	grid-column-start: 1;
+	grid-column-end: 3;
 }

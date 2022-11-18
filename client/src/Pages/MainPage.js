@@ -8,9 +8,10 @@ import { Historybar } from '../Components/Historybar/historybar';
 export const MainPage = (props) => {
   const [profileData, setProfileData] = useState({'name':null})
   const [inputData, setInputData] = useState("");
-  const [situationData, setSituationData] = useState("");
+  const [situationData, setSituationData] = useState("상황: 상황이 여기에 출력됩니다");
   const [dialogeData, setDialogeData] = useState("\"대사가 여기에 출력됩니다\"");
   const [logData, setLogData] = useState([{'id': '', 'input': '', 'output': ''}]);
+  const [clickedId, setClickedId] = useState("")
   
   const inputHandler = (e) => {
     setInputData(e.target.value);
@@ -64,6 +65,7 @@ export const MainPage = (props) => {
       setLogData(
         res.logData
       )
+      setClickedId(res.logData[0].id);
     })
     setSituationData("상황: " + inputData)
   }
@@ -74,6 +76,13 @@ export const MainPage = (props) => {
       sendRequest();
     }
   };
+
+  function setCurrent(situation, dialoge) {
+    setSituationData("상황: " + situation);
+    setDialogeData("\"" + dialoge + "\"");
+  }
+
+
 
   return (
     <div className='mainPage'>
@@ -92,8 +101,15 @@ export const MainPage = (props) => {
               {dialogeData}
             </div>
           </div>
+          <div className='stereoEvaluation'>
+            <div className='stereoChecker'>
+              <button className='stereoBtn'>고정관념 있음</button>
+              <button className='stereoBtn'>고정관념과 상반</button>
+              <button className='stereoBtn'>고정관념 없음</button>              
+            </div>
+          </div>
         </div>
-        <Historybar logData={logData}/>        
+        <Historybar logData={logData} clickedId={clickedId} setCurrent={setCurrent} setClickedId={setClickedId}/>        
       </div>
     </div>
   );
