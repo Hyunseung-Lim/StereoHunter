@@ -134,7 +134,7 @@ def profile():
     logData = []
     logs = Log.query.filter_by(user_id=user.id)
     for log in logs:
-        userLog = {"id": log.id, "input": log.input, "output": log.output}
+        userLog = {"id": log.id, "input": log.input, "output": log.output, "isStereo": log.isStereo}
         logData.append(userLog)
     logData.reverse()
     return {"logData": logData, "name": name}
@@ -161,11 +161,12 @@ def getinput():
         'includeAiFilters': True,
         'includeProbs': True
     }
-    response_text = completion_executor.execute(request_data).split("대사: ")[-1].split("\n###")[0]
+    response_text = (completion_executor.execute(request_data).split("대사: ")[-1].split("\n###")[0])[:-1]
     new_log = Log(
         user_id = user.id,
         input = inputData,
-        output = response_text
+        output = response_text,
+        isStereo = "noStereo"
     )
     db.session.add(new_log)
     db.session.commit()
@@ -173,12 +174,33 @@ def getinput():
     logData = []
     logs = Log.query.filter_by(user_id=user.id)
     for log in logs:
-        userLog = {"id": log.id, "input": log.input, "output": log.output}
+        userLog = {"id": log.id, "input": log.input, "output": log.output, "isStereo": log.isStereo}
         logData.append(userLog)
     logData.reverse()
     return {"logData": logData, "result": response_text}
 
-    
+
+@main.route("/setStereo", methods=["POST"])
+@cross_origin()
+@jwt_required()
+def setStereo():
+    user = User.query.filter_by(email=get_jwt_identity()).first()
+    params = request.get_json()
+    logId = params['id']
+    stereo = params['stereo']
+
+    log = Log.query.filter_by(id=logId).first()
+    log.isStereo = stereo
+    db.session.commit()
+
+    logData = []
+    logs = Log.query.filter_by(user_id=user.id)
+    for log in logs:
+        userLog = {"id": log.id, "input": log.input, "output": log.output, "isStereo": log.isStereo}
+        logData.append(userLog)
+    logData.reverse()
+    return {"logData": logData}
+
 
 # @main.route("/home")
 # @jwt_required()

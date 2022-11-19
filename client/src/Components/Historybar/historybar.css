@@ -33,15 +33,45 @@
   border-bottom: solid 1px #DDDDDD;
 }
 
-.history:hover{
+.history:hover {
   background-color: #EDEDED;
 }
 
 .history > .situation {
   margin-top: 10px;
+  margin-bottom: 3px;
   width: 100%;
   text-align: left;
   font-size: 12px;
+}
+
+.markHolder {
+  display: flex;
+}
+
+.markHolder > .stereoMark {
+  display: flex;
+  height: 19px;
+  font-size: 10px;
+  
+  padding: 4px 6px;
+  border-radius: 4px;
+  font-weight: 600;
+}
+
+.stereo {
+  background-color: #E8492F;
+  color: white;
+}
+
+.antiStereo {
+  background-color: #317FF5;
+  color: white;
+}
+
+.unrelated {
+  background-color: #DDDDDD;
+
 }
 
 .history > .dialoge {

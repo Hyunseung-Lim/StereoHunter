@@ -6,11 +6,16 @@
 
 .submitBtn {
   border-radius: 4px;
-  padding: 6px 10px;
-  font-size: 14px;
+  border: solid 0px;
+  padding: 5px 10px;
+  font-size: 12px;
   background-color: #00B7A1;
   color: white;
   margin: 0 20px;
+}
+
+.submitBtn:hover {
+  background-color: #00A490;
 }
 
 .mainNavbar {
@@ -35,4 +40,9 @@
   margin-left: 20px;
   font-size: 20px;
   font-family: 'HSUG';
+}
+
+.navbarInfo {
+  display: flex;
+  align-items: center;
 }

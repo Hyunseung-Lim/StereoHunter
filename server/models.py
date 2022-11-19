@@ -12,6 +12,7 @@ class Log(db.Model):
     user_id = db.Column(db.Integer, db.ForeignKey('user.id'), nullable=False)
     input = db.Column(db.String(1000))
     output = db.Column(db.String(1000))
+    isStereo = db.Column(db.String(100))
 
 # class Post(db.Model):
 #     id = db.Column(db.Integer, primary_key=True) # primary keys are required by SQLAlchemy

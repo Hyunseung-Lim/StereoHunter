@@ -17,6 +17,7 @@ export const MainPage = (props) => {
     setInputData(e.target.value);
   }
 
+  // get profile data from server
   function getData() {
     axios({
       method: "GET",
@@ -39,6 +40,19 @@ export const MainPage = (props) => {
         console.log(error.response)
         console.log(error.response.status)
         console.log(error.response.headers)
+        axios({
+          method: "POST",
+          url:"/logout",
+        })
+        .then((response) => {
+           props.removeToken()
+        }).catch((error) => {
+          if (error.response) {
+            console.log(error.response)
+            console.log(error.response.status)
+            console.log(error.response.headers)
+            }
+        })
         }
     })
   }
@@ -47,6 +61,7 @@ export const MainPage = (props) => {
     getData()
   }, []);
 
+  // request output from clova
   function sendRequest() {
     setDialogeData("로딩중...")
     axios({
@@ -82,7 +97,34 @@ export const MainPage = (props) => {
     setDialogeData("\"" + dialoge + "\"");
   }
 
+  function setStereo(id, stereo) {
+    axios({
+      method: "POST",
+      url:"/setStereo",
+      headers: {
+        Authorization: 'Bearer ' + props.token
+      },
+      data: { id: id, stereo: stereo }
+    })
+    .then((response) => {
+      const res =response.data
+      setLogData(
+        res.logData
+      )
+    })
+  }
 
+  function isStereo() {
+    setStereo(clickedId, "stereo")
+  }
+
+  function isAntiStereo() {
+    setStereo(clickedId, "antiStereo")
+  }
+
+  function isUnrelated() {
+    setStereo(clickedId, "unrelated")
+  }
 
   return (
     <div className='mainPage'>
@@ -91,7 +133,7 @@ export const MainPage = (props) => {
         <div className='playContents'>
           <div className='inputWindow'>
             <div className='inputWindowTitle'>상황을 입력해주세요.</div>
-            <input className='input' value={inputData} onChange={inputHandler} onKeyPress={handleOnKeyPress}></input>
+            <input className='input' value={inputData} onChange={inputHandler} onKeyPress={handleOnKeyPress}/>
           </div>
           <div className='outputWindow'>
             <div className='situation'>
@@ -101,13 +143,16 @@ export const MainPage = (props) => {
               {dialogeData}
             </div>
           </div>
-          <div className='stereoEvaluation'>
-            <div className='stereoChecker'>
-              <button className='stereoBtn'>고정관념 있음</button>
-              <button className='stereoBtn'>고정관념과 상반</button>
-              <button className='stereoBtn'>고정관념 없음</button>              
-            </div>
-          </div>
+          { clickedId === "" ? null
+            :
+            <div className='stereoEvaluation'>
+              <div className='stereoChecker'>
+                <button className='stereoBtn stereo' onClick={isStereo}>고정관념 있음</button>
+                <button className='stereoBtn antiStereo' onClick={isAntiStereo}>고정관념과 반대</button>
+                <button className='stereoBtn unrelated' onClick={isUnrelated}>관련 없음</button>              
+              </div>
+            </div>        
+          }
         </div>
         <Historybar logData={logData} clickedId={clickedId} setCurrent={setCurrent} setClickedId={setClickedId}/>        
       </div>

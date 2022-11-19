@@ -77,19 +77,44 @@
 }
 
 .stereoChecker {
-  display: grid;
-  width: 40%;
-  height: 200px;
-  margin: auto;
+  display: flex;
+  justify-content: center;
+  height: 70px;
   font-size: 1px;
   
 }
 
 .stereoBtn {
+  width: 150px;
+  border-radius: 10px;
+  border: solid 0px;
   margin: 5px;
+  font-weight: 600;
 }
 
-.stereoBtn:nth-child(3) {
-	grid-column-start: 1;
-	grid-column-end: 3;
+.stereoChecker > .stereo {
+  background-color: #E8492F;
+  color: white;
+}
+
+.stereoChecker > .stereo:hover {
+  background-color: #D6432B;
+}
+
+.stereoChecker > .antiStereo {
+  background-color: #317FF5;
+  color: white;
+}
+
+.stereoChecker > .antiStereo:hover {
+  background-color: #2A6FD6;
+}
+
+
+.stereoChecker > .unrelated {
+  background-color: #DDDDDD;
+}
+
+.stereoChecker > .unrelated:hover {
+  background-color: #C0C0C0;
 }
