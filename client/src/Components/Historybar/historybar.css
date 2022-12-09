@@ -69,6 +69,10 @@
   color: white;
 }
 
+.ambiguous {
+  background-color: #F5D633;
+}
+
 .unrelated {
   background-color: #DDDDDD;
 

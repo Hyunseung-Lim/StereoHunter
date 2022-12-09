@@ -4,6 +4,7 @@ import axios from "axios"
 
 import { MainNavbar } from '../Components/Navbar/mainNavbar';
 import { Historybar } from '../Components/Historybar/historybar';
+import { Evaluation } from '../Components/Evaluation/evaluation';
 
 export const MainPage = (props) => {
   const [profileData, setProfileData] = useState({'name':null})
@@ -12,6 +13,7 @@ export const MainPage = (props) => {
   const [dialogeData, setDialogeData] = useState("\"대사가 여기에 출력됩니다\"");
   const [logData, setLogData] = useState([{'id': '', 'input': '', 'output': ''}]);
   const [clickedId, setClickedId] = useState("")
+  const [evaluation, setEvaluation] = useState(false)
   
   const inputHandler = (e) => {
     setInputData(e.target.value);
@@ -122,8 +124,20 @@ export const MainPage = (props) => {
     setStereo(clickedId, "antiStereo")
   }
 
+  function isAmbiguous() {
+    setStereo(clickedId, "ambiguous")
+  }
+
   function isUnrelated() {
     setStereo(clickedId, "unrelated")
+  }
+
+  function evaluationStart() {
+    setEvaluation(true);
+  }
+
+  function evaluationFinish() {
+    setEvaluation(false);
   }
 
   return (
@@ -144,14 +158,23 @@ export const MainPage = (props) => {
             </div>
           </div>
           { clickedId === "" ? null
-            :
-            <div className='stereoEvaluation'>
-              <div className='stereoChecker'>
-                <button className='stereoBtn stereo' onClick={isStereo}>고정관념 있음</button>
-                <button className='stereoBtn antiStereo' onClick={isAntiStereo}>고정관념과 반대</button>
-                <button className='stereoBtn unrelated' onClick={isUnrelated}>관련 없음</button>              
+            :( evaluation == false ?
+              <div className='stereoEvaluation'>
+                <div className='stereoChecker'>
+                  <button className='stereoBtn stereo' onClick={isStereo}>고정관념 있음</button>
+                  <button className='stereoBtn antiStereo' onClick={isAntiStereo}>고정관념과 반대</button>
+                  <button className='stereoBtn ambiguous' onClick={isAmbiguous}>애매모호함</button>
+                  <button className='stereoBtn unrelated' onClick={isUnrelated}>관련 없음</button>
+                </div>
+                <div>
+                  <button onClick={evaluationStart}>평가하기</button>
+                </div>
               </div>
-            </div>        
+              :
+              <div className='stereoEvaluation'>
+                <Evaluation evaluationFinish={evaluationFinish}/>
+              </div>              
+            )
           }
         </div>
         <Historybar logData={logData} clickedId={clickedId} setCurrent={setCurrent} setClickedId={setClickedId}/>        

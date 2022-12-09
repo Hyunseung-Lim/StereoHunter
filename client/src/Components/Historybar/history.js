@@ -13,7 +13,13 @@ export const History = (props) => {
             <nav className='history clicked' onClick={clickHistory}>
                 <div className="situation">상황: {props.historyLog.input}</div>
                 <div className='markHolder'>
-                    {props.historyLog.isStereo === "stereo" ? <div className='stereoMark stereo'>#고정관념</div> :(props.historyLog.isStereo === "antiStereo" ? <div className='stereoMark antiStereo'>#반고정관념</div> : null)}                    
+                    {props.historyLog.isStereo === "stereo"
+                        ? <div className='stereoMark stereo'>#고정관념</div> 
+                        :(props.historyLog.isStereo === "antiStereo" 
+                            ? <div className='stereoMark antiStereo'>#반고정관념</div> 
+                            : (props.historyLog.isStereo === "ambiguous" 
+                                ? <div className='stereoMark ambiguous'>#애매모호</div> 
+                                : null))}
                 </div>
                 <div className="dialoge">"{props.historyLog.output}"</div>
             </nav>
@@ -24,7 +30,13 @@ export const History = (props) => {
             <nav className='history' onClick={clickHistory}>
                 <div className="situation">상황: {props.historyLog.input}</div>
                 <div className='markHolder'>
-                {props.historyLog.isStereo === "stereo" ? <div className='stereoMark stereo'>#고정관념</div> :(props.historyLog.isStereo === "antiStereo" ? <div className='stereoMark antiStereo'>#반고정관념</div> : null)}                                    
+                {props.historyLog.isStereo === "stereo" 
+                    ? <div className='stereoMark stereo'>#고정관념</div> 
+                    :(props.historyLog.isStereo === "antiStereo" 
+                        ? <div className='stereoMark antiStereo'>#반고정관념</div> 
+                        : (props.historyLog.isStereo === "ambiguous" 
+                            ? <div className='stereoMark ambiguous'>#애매모호</div> 
+                            : null))}
                 </div>
                 <div className="dialoge">"{props.historyLog.output}"</div>
             </nav>

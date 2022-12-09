@@ -1,0 +1,36 @@
+.evaluation {
+    display:grid;
+    grid-template-columns: 1fr 1fr;
+    width: 100%;
+}
+
+.evaluationLeft {
+    padding: 20px 50px;
+}
+
+.evaluationRight {
+    padding: 20px 50px;
+}
+
+.evalType {
+    margin-bottom: 30px;
+}
+
+.evalType > .title {
+    margin-bottom: 10px;
+}
+
+.evalVariable {
+    margin-bottom: 20px; 
+    display: flex;
+    flex-direction: column;
+}
+
+.evalSubmit {
+    display: flex;
+    justify-content: end;
+    flex-direction: row-reverse;
+    align-items: center;
+    width: 100%;
+    padding-right: 20px;
+}

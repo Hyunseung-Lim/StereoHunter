@@ -73,6 +73,10 @@
 }
 
 .stereoEvaluation {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
   width: 100%;
 }
 
@@ -109,6 +113,15 @@
 .stereoChecker > .antiStereo:hover {
   background-color: #2A6FD6;
 }
+
+.stereoChecker > .ambiguous {
+  background-color: #F5D633;
+}
+
+.stereoChecker > .ambiguous:hover {
+  background-color: #DBBF2F;
+}
+
 
 
 .stereoChecker > .unrelated {
