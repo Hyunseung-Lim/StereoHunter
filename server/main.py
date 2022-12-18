@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 from flask import Blueprint, current_app, redirect, url_for, request, flash, jsonify
 from werkzeug.security import generate_password_hash, check_password_hash
 from flask_cors import cross_origin
@@ -134,7 +135,7 @@ def profile():
     logData = []
     logs = Log.query.filter_by(user_id=user.id)
     for log in logs:
-        userLog = {"id": log.id, "input": log.input, "output": log.output, "isStereo": log.isStereo}
+        userLog = {"id": log.id, "input": log.input, "output": log.output, "isStereo": log.isStereo, "targets": log.targets, "relation": log.relation, "degree": log.degree, "context": log.context, "isWordIssue": log.isWordIssue, "words": log.words, "ambiguous": log.ambiguous}
         logData.append(userLog)
     logData.reverse()
     return {"logData": logData, "name": name}
@@ -174,7 +175,7 @@ def getinput():
     logData = []
     logs = Log.query.filter_by(user_id=user.id)
     for log in logs:
-        userLog = {"id": log.id, "input": log.input, "output": log.output, "isStereo": log.isStereo}
+        userLog = {"id": log.id, "input": log.input, "output": log.output, "isStereo": log.isStereo, "targets": log.targets, "relation": log.relation, "degree": log.degree, "context": log.context, "isWordIssue": log.isWordIssue, "words": log.words, "ambiguous": log.ambiguous}
         logData.append(userLog)
     logData.reverse()
     return {"logData": logData, "result": response_text}
@@ -196,7 +197,7 @@ def setStereo():
     logData = []
     logs = Log.query.filter_by(user_id=user.id)
     for log in logs:
-        userLog = {"id": log.id, "input": log.input, "output": log.output, "isStereo": log.isStereo}
+        userLog = {"id": log.id, "input": log.input, "output": log.output, "isStereo": log.isStereo, "targets": log.targets, "relation": log.relation, "degree": log.degree, "context": log.context, "isWordIssue": log.isWordIssue, "words": log.words, "ambiguous": log.ambiguous}
         logData.append(userLog)
     logData.reverse()
     return {"logData": logData}

@@ -96,6 +96,24 @@
   font-weight: 600;
 }
 
+.evaluationBtn {
+  margin-top: 200px;
+  height: 200px;
+  width: 200px;
+  font-size: 20px;
+  font-weight: 600;
+  border-radius: 100px;
+  border: solid 10px #dddddd;
+}
+
+.evaluationBtnHolder > .stereo:hover {
+  background-color: #D6432B;
+}
+
+.evaluationBtnHolder > .antiStereo:hover {
+  background-color: #2A6FD6;
+}
+
 .stereoChecker > .stereo {
   background-color: #E8492F;
   color: white;
@@ -104,6 +122,16 @@
 .stereoChecker > .stereo:hover {
   background-color: #D6432B;
 }
+
+.stereoChecker > .neutral {
+  background-color: #30C680;
+  color: white;
+}
+
+.stereoChecker > .neutral:hover {
+  background-color: #29AB6F;
+}
+
 
 .stereoChecker > .antiStereo {
   background-color: #317FF5;
@@ -121,8 +149,6 @@
 .stereoChecker > .ambiguous:hover {
   background-color: #DBBF2F;
 }
-
-
 
 .stereoChecker > .unrelated {
   background-color: #DDDDDD;

@@ -64,6 +64,11 @@
   color: white;
 }
 
+.neutral {
+  background-color: #30C680;
+  color: white;  
+}
+
 .antiStereo {
   background-color: #317FF5;
   color: white;

@@ -120,6 +120,10 @@ export const MainPage = (props) => {
     setStereo(clickedId, "stereo")
   }
 
+  function isNeutral() {
+    setStereo(clickedId, "neutral")
+  }
+
   function isAntiStereo() {
     setStereo(clickedId, "antiStereo")
   }
@@ -145,10 +149,14 @@ export const MainPage = (props) => {
       <MainNavbar name={profileData.name} removeToken={props.removeToken}/>
       <div className='container'>
         <div className='playContents'>
-          <div className='inputWindow'>
-            <div className='inputWindowTitle'>상황을 입력해주세요.</div>
-            <input className='input' value={inputData} onChange={inputHandler} onKeyPress={handleOnKeyPress}/>
-          </div>
+          { evaluation == false ?
+            <div className='inputWindow'>
+              <div className='inputWindowTitle'>상황을 입력해주세요.</div>
+              <input className='input' value={inputData} onChange={inputHandler} onKeyPress={handleOnKeyPress}/>
+            </div>
+            :
+            null
+          }
           <div className='outputWindow'>
             <div className='situation'>
               {situationData}
@@ -157,22 +165,38 @@ export const MainPage = (props) => {
               {dialogeData}
             </div>
           </div>
-          { clickedId === "" ? null
+          { clickedId == "" ? null
             :( evaluation == false ?
               <div className='stereoEvaluation'>
                 <div className='stereoChecker'>
                   <button className='stereoBtn stereo' onClick={isStereo}>고정관념 있음</button>
+                  <button className='stereoBtn neutral' onClick={isNeutral}>중립</button>
                   <button className='stereoBtn antiStereo' onClick={isAntiStereo}>고정관념과 반대</button>
                   <button className='stereoBtn ambiguous' onClick={isAmbiguous}>애매모호함</button>
                   <button className='stereoBtn unrelated' onClick={isUnrelated}>관련 없음</button>
                 </div>
-                <div>
-                  <button onClick={evaluationStart}>평가하기</button>
-                </div>
+                { logData[logData.findIndex(message => message.id === clickedId)].isStereo == "stereo" ?
+                  <div className='evaluationBtnHolder'>
+                    <button className='evaluationBtn stereo' onClick={evaluationStart}>평가하기</button>
+                  </div>
+                : (
+                    logData[logData.findIndex(message => message.id === clickedId)].isStereo == "antiStereo" ?
+                    <div className='evaluationBtnHolder'>
+                      <button className='evaluationBtn antiStereo' onClick={evaluationStart}>평가하기</button>
+                    </div>
+                    : (
+                      logData[logData.findIndex(message => message.id === clickedId)].isStereo == "ambiguous" ?
+                      <>
+                      gk
+                      </>
+                      : null
+                    ) 
+                  )   
+                }
               </div>
               :
               <div className='stereoEvaluation'>
-                <Evaluation evaluationFinish={evaluationFinish}/>
+                <Evaluation dialoge={logData[logData.findIndex(message => message.id === clickedId)].output} evaluationFinish={evaluationFinish}/>
               </div>              
             )
           }

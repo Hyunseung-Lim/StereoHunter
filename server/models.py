@@ -13,6 +13,13 @@ class Log(db.Model):
     input = db.Column(db.String(1000))
     output = db.Column(db.String(1000))
     isStereo = db.Column(db.String(100))
+    targets = db.Column(db.JSON)
+    relation = db.Column(db.String(100))
+    degree = db.Column(db.String(100))
+    context = db.Column(db.String(100))
+    isWordIssue = db.Column(db.String(100))
+    words = db.Column(db.JSON)
+    ambiguous = db.Column(db.String(1000))
 
 # class Post(db.Model):
 #     id = db.Column(db.Integer, primary_key=True) # primary keys are required by SQLAlchemy

@@ -19,7 +19,9 @@ export const History = (props) => {
                             ? <div className='stereoMark antiStereo'>#반고정관념</div> 
                             : (props.historyLog.isStereo === "ambiguous" 
                                 ? <div className='stereoMark ambiguous'>#애매모호</div> 
-                                : null))}
+                                :(props.historyLog.isStereo === "neutral" 
+                                    ? <div className='stereoMark neutral'>#중립</div> 
+                                    : null)))}
                 </div>
                 <div className="dialoge">"{props.historyLog.output}"</div>
             </nav>
@@ -36,7 +38,9 @@ export const History = (props) => {
                         ? <div className='stereoMark antiStereo'>#반고정관념</div> 
                         : (props.historyLog.isStereo === "ambiguous" 
                             ? <div className='stereoMark ambiguous'>#애매모호</div> 
-                            : null))}
+                            :(props.historyLog.isStereo === "neutral" 
+                                ? <div className='stereoMark neutral'>#중립</div> 
+                                : null)))}
                 </div>
                 <div className="dialoge">"{props.historyLog.output}"</div>
             </nav>
