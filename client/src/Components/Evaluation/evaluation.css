@@ -45,7 +45,7 @@
 
 .evalVariable > .clickedBtn {
     border: 0px;
-    border-radius: 10px;
+    border-radius: 5px;
     height: 30px;
     margin-bottom: 2px;
     font-size: 14px;
@@ -60,10 +60,25 @@
 
 .evalSubmit {
     display: flex;
-    justify-content: end;
-    flex-direction: row-reverse;
+    justify-content: center;
     align-items: center;
     width: 100%;
+}
+
+.evalSubmit > button {
+    border: 0px;
+    border-radius: 20px;
+    margin-top: 20px;
+    width: 60%;
+    height: 60px;
+    font-size: 20px;
+    font-weight: 600;
+    color: white;
+    background-color: #00B7A1;
+}
+
+.evalSubmit > button:hover {
+    background-color: #00A490;
 }
 
 .introductionOfEval {
@@ -83,4 +98,13 @@
     display: flex;
     flex-direction: row-reverse;
     width: 100%;
+}
+
+fieldset.likertScale .likertIndicator {
+    border: thin solid #00B7A1;
+    background-color: #dddddd;
+}
+
+fieldset.likertScale .likertResponse > input:checked + .likertIndicator {
+    background-color: #00B7A1;
 }

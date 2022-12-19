@@ -97,17 +97,57 @@
 }
 
 .evaluationBtn {
-  margin-top: 200px;
+  margin-top: 100px;
   height: 200px;
   width: 200px;
   font-size: 20px;
   font-weight: 600;
   border-radius: 100px;
-  border: solid 10px #dddddd;
+  border: 0px;
 }
 
 .evaluationBtnHolder > .stereo:hover {
   background-color: #D6432B;
+}
+
+.ambiguousHolder {
+  margin-top: 100px;
+  display: flex;
+  width: 80%;
+  flex-direction: column;
+
+}
+
+.ambiguousHolder > textarea {
+  resize: none;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  font-size: 16px;
+  height: 100px;
+}
+
+.ambiguousHolder > button {
+  background-color: #00B7A1;
+  color: white;
+  border: 0px;
+  font-size: 16px;
+  font-weight: 600;
+  height: 40px;
+  border-radius: 5px;
+}
+
+.ambiguousHolder > button:hover {
+  background-color: #00A490;
+}
+
+.ambiguousHolder > .unclickable {
+  background-color: #C0C0C0;
+  color: black;
+}
+
+.ambiguousHolder > .unclickable:hover {
+  background-color: #C0C0C0;
+  color: black;
 }
 
 .evaluationBtnHolder > .antiStereo:hover {

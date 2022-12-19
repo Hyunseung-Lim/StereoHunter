@@ -1,16 +1,16 @@
-import React, { useState } from 'react'
+import React from 'react'
 import './historybar.css'
 
 export const History = (props) => {
 
     function clickHistory() {
         props.setClickedId(props.historyLog.id);
-        props.setCurrent(props.historyLog.input, props.historyLog.output);
+        props.setCurrent(props.historyLog.input, props.historyLog.output, props.historyLog.id);
     }
 
     if(props.clickedId === props.historyLog.id) {
         return(
-            <nav className='history clicked' onClick={clickHistory}>
+            <nav className='history clicked' onClick={props.evaluation || props.ambiguous ? null : clickHistory}>
                 <div className="situation">상황: {props.historyLog.input}</div>
                 <div className='markHolder'>
                     {props.historyLog.isStereo === "stereo"
@@ -29,7 +29,7 @@ export const History = (props) => {
     }
     else{
         return(
-            <nav className='history' onClick={clickHistory}>
+            <nav className='history' onClick={props.evaluation || props.ambiguous ? null : clickHistory}>
                 <div className="situation">상황: {props.historyLog.input}</div>
                 <div className='markHolder'>
                 {props.historyLog.isStereo === "stereo" 

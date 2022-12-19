@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from 'react'
-import { Link } from 'react-router-dom'
 import axios from "axios"
 
 import { MainNavbar } from '../Components/Navbar/mainNavbar';
@@ -11,12 +10,19 @@ export const MainPage = (props) => {
   const [inputData, setInputData] = useState("");
   const [situationData, setSituationData] = useState("상황: 상황이 여기에 출력됩니다");
   const [dialogeData, setDialogeData] = useState("\"대사가 여기에 출력됩니다\"");
-  const [logData, setLogData] = useState([{'id': '', 'input': '', 'output': ''}]);
+  const [logData, setLogData] = useState([{'id': '', 'input': '', 'output': '', 'ambiguous':''}]);
   const [clickedId, setClickedId] = useState("")
   const [evaluation, setEvaluation] = useState(false)
+  const [ambiguousText, setAmbiguousText] = useState('')
+  const [ambiguousBtn, setAmbiguousBtn] = useState(false)
   
   const inputHandler = (e) => {
     setInputData(e.target.value);
+  }
+
+  const ambiguousHandler = (e) => {
+    setAmbiguousText(e.target.value);
+    setAmbiguousBtn(true);
   }
 
   // get profile data from server
@@ -88,15 +94,16 @@ export const MainPage = (props) => {
   }
     
   const handleOnKeyPress = e => {
-    e.preventDefault();
     if (e.key === 'Enter') {
       sendRequest();
+      setInputData("");
     }
   };
 
-  function setCurrent(situation, dialoge) {
+  function setCurrent(situation, dialoge, id) {
     setSituationData("상황: " + situation);
     setDialogeData("\"" + dialoge + "\"");
+    setAmbiguousText(logData[logData.findIndex(message => message.id === id)].ambiguous);
   }
 
   function setStereo(id, stereo) {
@@ -113,7 +120,26 @@ export const MainPage = (props) => {
       setLogData(
         res.logData
       )
+      setAmbiguousText(logData[logData.findIndex(message => message.id === id)].ambiguous);
     })
+  }
+
+  function setAmbiguous() {
+    axios({
+      method: "POST",
+      url:"/setAmbiguous",
+      headers: {
+        Authorization: 'Bearer ' + props.token
+      },
+      data: { id: clickedId, ambiguous: ambiguousText }
+    })
+    .then((response) => {
+      const res =response.data
+      setLogData(
+        res.logData
+      )
+    })
+    setAmbiguousBtn(false);
   }
 
   function isStereo() {
@@ -149,7 +175,7 @@ export const MainPage = (props) => {
       <MainNavbar name={profileData.name} removeToken={props.removeToken}/>
       <div className='container'>
         <div className='playContents'>
-          { evaluation == false ?
+          { evaluation === false ?
             <div className='inputWindow'>
               <div className='inputWindowTitle'>상황을 입력해주세요.</div>
               <input className='input' value={inputData} onChange={inputHandler} onKeyPress={handleOnKeyPress}/>
@@ -165,8 +191,8 @@ export const MainPage = (props) => {
               {dialogeData}
             </div>
           </div>
-          { clickedId == "" ? null
-            :( evaluation == false ?
+          { clickedId === "" ? null
+            :( evaluation === false ?
               <div className='stereoEvaluation'>
                 <div className='stereoChecker'>
                   <button className='stereoBtn stereo' onClick={isStereo}>고정관념 있음</button>
@@ -175,33 +201,35 @@ export const MainPage = (props) => {
                   <button className='stereoBtn ambiguous' onClick={isAmbiguous}>애매모호함</button>
                   <button className='stereoBtn unrelated' onClick={isUnrelated}>관련 없음</button>
                 </div>
-                { logData[logData.findIndex(message => message.id === clickedId)].isStereo == "stereo" ?
+                { logData[logData.findIndex(message => message.id === clickedId)].isStereo === "stereo" ?
                   <div className='evaluationBtnHolder'>
                     <button className='evaluationBtn stereo' onClick={evaluationStart}>평가하기</button>
                   </div>
                 : (
-                    logData[logData.findIndex(message => message.id === clickedId)].isStereo == "antiStereo" ?
+                    logData[logData.findIndex(message => message.id === clickedId)].isStereo === "antiStereo" ?
                     <div className='evaluationBtnHolder'>
                       <button className='evaluationBtn antiStereo' onClick={evaluationStart}>평가하기</button>
                     </div>
                     : (
-                      logData[logData.findIndex(message => message.id === clickedId)].isStereo == "ambiguous" ?
-                      <>
-                      gk
-                      </>
+                      logData[logData.findIndex(message => message.id === clickedId)].isStereo === "ambiguous" ?
+                      <div className='ambiguousHolder'>
+                        <div>판단하기 어렵다고 생각한 이유를 적어주세요.</div>
+                        <textarea value={ambiguousText} onChange={ambiguousHandler}></textarea>
+                        <button className={ambiguousBtn === true ? null : 'unclickable'} onClick={ambiguousBtn === true ? setAmbiguous : null}>완료</button>
+                      </div>
                       : null
-                    ) 
+                    )
                   )   
                 }
               </div>
               :
               <div className='stereoEvaluation'>
-                <Evaluation dialoge={logData[logData.findIndex(message => message.id === clickedId)].output} evaluationFinish={evaluationFinish}/>
+                <Evaluation id ={clickedId} token={props.token} setLogData ={setLogData} dialoge={logData[logData.findIndex(message => message.id === clickedId)].output} evaluationFinish={evaluationFinish}/>
               </div>              
             )
           }
         </div>
-        <Historybar logData={logData} clickedId={clickedId} setCurrent={setCurrent} setClickedId={setClickedId}/>        
+        <Historybar logData={logData} clickedId={clickedId} ambiguous = {ambiguousBtn} evaluation ={evaluation} setCurrent={setCurrent} setClickedId={setClickedId}/>        
       </div>
     </div>
   );

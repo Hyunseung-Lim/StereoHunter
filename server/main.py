@@ -167,7 +167,8 @@ def getinput():
         user_id = user.id,
         input = inputData,
         output = response_text,
-        isStereo = "noStereo"
+        isStereo = "noStereo",
+        ambiguous = ""
     )
     db.session.add(new_log)
     db.session.commit()
@@ -192,6 +193,65 @@ def setStereo():
 
     log = Log.query.filter_by(id=logId).first()
     log.isStereo = stereo
+    log.targets = None
+    log.relation = None
+    log.degree = None
+    log.context = None
+    log.isWordIssue = None
+    log.words = None
+    log.ambiguous = ''
+    db.session.commit()
+
+    logData = []
+    logs = Log.query.filter_by(user_id=user.id)
+    for log in logs:
+        userLog = {"id": log.id, "input": log.input, "output": log.output, "isStereo": log.isStereo, "targets": log.targets, "relation": log.relation, "degree": log.degree, "context": log.context, "isWordIssue": log.isWordIssue, "words": log.words, "ambiguous": log.ambiguous}
+        logData.append(userLog)
+    logData.reverse()
+    return {"logData": logData}
+
+
+@main.route("/evaluation", methods=["POST"])
+@cross_origin()
+@jwt_required()
+def evaluation():
+    user = User.query.filter_by(email=get_jwt_identity()).first()
+    params = request.get_json()
+    logId = params['id']
+    targets = params['targets']
+    relation = params['relation']
+    degree = params['degree']
+    context = params['context']
+    isWordIssue = params['isWordIssue']
+    words = params['words']
+
+    log = Log.query.filter_by(id=logId).first()
+    log.targets = targets
+    log.relation = relation
+    log.degree = degree
+    log.context = context
+    log.isWordIssue = isWordIssue
+    log.words = words
+    db.session.commit()
+
+    logData = []
+    logs = Log.query.filter_by(user_id=user.id)
+    for log in logs:
+        userLog = {"id": log.id, "input": log.input, "output": log.output, "isStereo": log.isStereo, "targets": log.targets, "relation": log.relation, "degree": log.degree, "context": log.context, "isWordIssue": log.isWordIssue, "words": log.words, "ambiguous": log.ambiguous}
+        logData.insert(0, userLog)
+    return {"logData": logData}
+
+@main.route("/setAmbiguous", methods=["POST"])
+@cross_origin()
+@jwt_required()
+def setAmbiguous():
+    user = User.query.filter_by(email=get_jwt_identity()).first()
+    params = request.get_json()
+    logId = params['id']
+    ambiguous = params['ambiguous']
+
+    log = Log.query.filter_by(id=logId).first()
+    log.ambiguous = ambiguous
     db.session.commit()
 
     logData = []

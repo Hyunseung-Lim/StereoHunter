@@ -1,4 +1,4 @@
-import React, { useRef, useState } from 'react';
+import React, { useRef} from 'react';
 
 export const DragText = (props) => {
     const textRef = useRef(null);
@@ -8,7 +8,9 @@ export const DragText = (props) => {
       if (selection.rangeCount > 0) {
         // Add a span element to highlight the selected text
         const span = document.createElement('span');
-        span.style.color = '#00B7A1';
+        span.style.color = '#ffffff';
+        span.style.backgroundColor = '#00B7A1';
+        span.style.borderRadius = '2px';
         selection.getRangeAt(0).surroundContents(span);
   
         // Save the selected text to the array
@@ -38,7 +40,7 @@ export const DragText = (props) => {
         </div>
         <div className="dialogeHolder" ref={textRef} onMouseUp={handleMouseUp}>
           <div className="dialoge">
-            "{props.dialoge}"
+            {props.dialoge}
           </div>
         </div>
       </div>
