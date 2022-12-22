@@ -26,7 +26,7 @@ export const MainNavbar = (props) => {
             <nav className='mainNavbar'>
                 <div className='navbarContainer'>
                     <div className='title'> 
-                        숨은 고정관념 찾기
+                        스테레오 헌터
                     </div>
                     <div className='navbarInfo'>
                         <div className='userName'>

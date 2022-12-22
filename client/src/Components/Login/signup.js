@@ -60,7 +60,7 @@ export const Signup = (props) => {
             <div className='signholder'>
                 <form className='signupbox' onSubmit={submitHander}>
                     <div className='signinTitle'>
-                        숨은 고정관념 찾기
+                        스테레오 헌터
                     </div>
                     <input className='signInput' type="email" placeholder={'이메일'} value={email}  onChange={emailHandler}></input>
                     <input className='signInput' type="name" placeholder={'이름'} value={name} onChange={nameHandler}></input>

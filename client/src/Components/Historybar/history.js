@@ -21,7 +21,9 @@ export const History = (props) => {
                                 ? <div className='stereoMark ambiguous'>#애매모호</div> 
                                 :(props.historyLog.isStereo === "neutral" 
                                     ? <div className='stereoMark neutral'>#중립</div> 
-                                    : null)))}
+                                    : (props.historyLog.isStereo === "unrelated" 
+                                        ? <div className='stereoMark unrelated'>#관련없음</div> 
+                                        : null))))}
                 </div>
                 <div className="dialoge">"{props.historyLog.output}"</div>
             </nav>

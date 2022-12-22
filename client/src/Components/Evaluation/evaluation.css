@@ -1,5 +1,8 @@
 .evaluation {
     display:grid;
+    overflow: scroll;
+    overflow-x:hidden; 
+    overflow-y:auto; 
     grid-template-columns: 1fr 1fr;
     width: 100%;
 }
@@ -20,8 +23,14 @@
     margin-bottom: 10px;
 }
 
+.secondaryTitle {
+    margin-top: 2px;
+    color: #888888;
+    font-size: 14px;
+}
+
 .evalVariable {
-    margin-bottom: 20px; 
+    margin-bottom: 30px; 
     display: flex;
     flex-direction: column;
 }
@@ -30,20 +39,26 @@
     margin-bottom: 10px;
 }
 
-.evalVariable > button {
+.evalVariable > .buttonHolder {
+    display: flex;
+}
+
+.evalVariable > .buttonHolder > button {
+    flex-grow: 1;
+    width: 90px;
     border: 0px;
-    border-radius: 10px;
+    border-radius: 5px;
     height: 30px;
     font-size: 14px;
-    margin-bottom: 2px;
-    background-color: #FBFBFB;
+    margin: 0 5px 2px;
+    background-color: #F0F0F0;
 }
 
-.evalVariable > button:hover {
-    background-color: #EDEDED;
+.evalVariable > .buttonHolder > button:hover {
+    background-color: #dddddd;
 }
 
-.evalVariable > .clickedBtn {
+.evalVariable > .buttonHolder > .clickedBtn {
     border: 0px;
     border-radius: 5px;
     height: 30px;
@@ -53,7 +68,7 @@
     background-color: #00B7A1;
 }
 
-.evalVariable > .clickedBtn:hover {
+.evalVariable > .buttonHolder > .clickedBtn:hover {
     background-color: #00A490;
 }
 
@@ -67,10 +82,10 @@
 
 .evalSubmit > button {
     border: 0px;
-    border-radius: 20px;
+    border-radius: 10px;
     margin-top: 20px;
-    width: 60%;
-    height: 60px;
+    width: 100%;
+    height: 50px;
     font-size: 20px;
     font-weight: 600;
     color: white;
@@ -100,11 +115,30 @@
     width: 100%;
 }
 
+fieldset.likertScale {
+    font-size: 14px;  
+}
+
 fieldset.likertScale .likertIndicator {
+    font-size: 16px;  
     border: thin solid #00B7A1;
     background-color: #dddddd;
 }
 
 fieldset.likertScale .likertResponse > input:checked + .likertIndicator {
     background-color: #00B7A1;
+}
+
+.dragReset {
+    border: 0px;
+    border-radius: 5px;
+    padding: 5px 10px;
+    font-size: 12px;
+    font-weight: 600;
+    color: white;
+    background-color: #00B7A1;    
+}
+
+.dragReset:hover {
+    background-color: #00A490;
 }

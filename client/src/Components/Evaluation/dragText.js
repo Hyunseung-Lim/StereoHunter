@@ -36,7 +36,7 @@ export const DragText = (props) => {
     return (
       <div className='textDragHolder'>
         <div className='resetHolder'>
-          <button className='dragReset' onClick={resetSelectedText}>Reset</button>          
+          <button className='dragReset' onClick={resetSelectedText}>RESET</button>          
         </div>
         <div className="dialogeHolder" ref={textRef} onMouseUp={handleMouseUp}>
           <div className="dialoge">

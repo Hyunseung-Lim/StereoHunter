@@ -47,7 +47,7 @@ export const Signin = (props) => {
             <div className='signholder'>
                 <form className='signinbox' onSubmit={submitHander}>
                     <div className='signinTitle'>
-                        숨은 고정관념 찾기
+                        스테레오 헌터
                     </div>
                     <input className='signInput' type="email" value={email} onChange={emailHandler} placeholder={'이메일'}></input>
                     <input className='signInput' type="password" value={password} onChange={passwordHandler} placeholder={'비밀번호'} autoComplete="on"></input>
@@ -60,7 +60,7 @@ export const Signin = (props) => {
                     <button onClick={() => props.setIsSignup()}>
                         가입하기
                     </button>
-                </div>   
+                </div>
             </div>
         </>
     )

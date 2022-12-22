@@ -16,6 +16,9 @@
 
 .container > .playContents {
   display: flex;
+  overflow: scroll;
+  overflow-x:hidden; 
+  overflow-y:auto; 
   width: 100%;
   flex-direction: column;
   align-items: center;
@@ -31,6 +34,7 @@
   align-items: center;
 }
 .inputWindow > .inputWindowTitle {
+  display: flex;
   width: 100%;
   text-align: left;
 }
@@ -74,6 +78,9 @@
 
 .stereoEvaluation {
   display: flex;
+  overflow: scroll;
+  overflow-x:hidden; 
+  overflow-y:auto; 
   justify-content: center;
   flex-direction: column;
   align-items: center;
@@ -97,13 +104,46 @@
 }
 
 .evaluationBtn {
-  margin-top: 100px;
-  height: 200px;
+  margin-top: 20px;
+  height: 60px;
   width: 200px;
   font-size: 20px;
   font-weight: 600;
-  border-radius: 100px;
+  border-radius: 10px;
   border: 0px;
+}
+
+.evaluationBtnHolder{
+  margin-top: 80px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.neutralHolder{
+  margin-top: 80px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;  
+}
+
+.unrelatedHolder{
+  margin-top: 80px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;  
+}
+
+.evalExplaination {
+  margin-bottom: 10px;
+  color: #888888;
+  font-size: 18px;
+}
+
+.retryExplaination {
+  margin-top: 20px;
+  color: #888888;
+  font-size: 14px;  
 }
 
 .evaluationBtnHolder > .stereo:hover {
@@ -111,22 +151,29 @@
 }
 
 .ambiguousHolder {
-  margin-top: 100px;
+  width: 100%;
+  margin-top: 80px;
   display: flex;
-  width: 80%;
   flex-direction: column;
-
+  align-items: center;  
 }
 
-.ambiguousHolder > textarea {
+.ambiguousQuestion {
+  margin-top: 10px;
+  display: flex;
+  width: 60%;
+  flex-direction: column;
+}
+
+.ambiguousQuestion > textarea {
   resize: none;
   margin-top: 10px;
   margin-bottom: 10px;
   font-size: 16px;
-  height: 100px;
+  height: 120px;
 }
 
-.ambiguousHolder > button {
+.ambiguousQuestion > button {
   background-color: #00B7A1;
   color: white;
   border: 0px;
@@ -136,16 +183,16 @@
   border-radius: 5px;
 }
 
-.ambiguousHolder > button:hover {
+.ambiguousQuestion > button:hover {
   background-color: #00A490;
 }
 
-.ambiguousHolder > .unclickable {
+.ambiguousQuestion > .unclickable {
   background-color: #C0C0C0;
   color: black;
 }
 
-.ambiguousHolder > .unclickable:hover {
+.ambiguousQuestion > .unclickable:hover {
   background-color: #C0C0C0;
   color: black;
 }
@@ -196,4 +243,38 @@
 
 .stereoChecker > .unrelated:hover {
   background-color: #C0C0C0;
+}
+
+.userTable {
+  border: solid 1px black;
+  border-collapse : collapse;
+}
+
+tr td {
+  border: solid 1px black;
+  text-align: center;
+  padding: 0px 10px;
+}
+
+td {
+  max-width: 450px;
+}
+
+th {
+  border: solid 1px black;
+  padding: 0px 10px;
+}
+
+.retryButton {
+  width: 60px;
+  height: 60px;
+  border-radius: 30px;
+  border: 0px;
+  background-color: #dddddd;
+  opacity: 0.8;
+  
+}
+.retryButton:hover {
+  background-color: #cccccc;
+  
 }
