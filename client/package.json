@@ -2,7 +2,7 @@
   "name": "client",
   "version": "0.1.0",
   "private": true,
-  "proxy": "https://port-0-stereohunterserver-20z52flbz4onwf.gksl2.cloudtype.app/",
+  "proxy": "http://127.0.0.1:5000/",
   "dependencies": {
     "@coreui/coreui": "^4.2.3",
     "@coreui/react": "^4.4.0",
