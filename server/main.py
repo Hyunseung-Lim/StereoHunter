@@ -338,43 +338,7 @@ def manage():
     return {"logData": totalLogData, "activityData": activityData}
 
 
-# @main.route("/home")
-# @jwt_required()
-# def home():
-#     user = User.query.filter_by(email=get_jwt_identity()).first()
-#     posts = Post.query.filter_by(user_id=user.id)
-#     posts_data = {}
-#     for post in posts:
-#         num = post.post_num
-#         posts_data[num] = {
-#             "post_image": post.post_image,
-#             "post_text": post.post_text
-#         }
-#     return {"posts": posts_data}
-
-# @main.route("/upload", methods=["POST"])
-# @cross_origin()
-# @jwt_required()
-# def upload():
-#     user = User.query.filter_by(email=get_jwt_identity()).first()
-#     image = request.files['post_image']
-#     post_text = request.form.get("post_text")
-#     post_num = user.posts + 1
-#     post_image = "u" + str(user.id) + "_p" + str(post_num) + ".png"
-#     if image:
-#         image.save(os.path.join(current_app.config['UPLOAD_FOLDER'] + "/photo/", post_image))
-#     new_post = Post(
-#         post_num = post_num,
-#         user_id = user.id,
-#         post_image = post_image,
-#         post_text = post_text
-#     )
-#     user.posts = post_num
-#     db.session.add(new_post)
-#     db.session.commit()
-#     return {"msg": post_text}
-
 app = create_app()
 if __name__ == '__main__':
     db.create_all(app=create_app())
-    app.run(debug=True)
+    app.run(host='0.0.0.0', port=5000, debug=True)

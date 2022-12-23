@@ -1,4 +1,6 @@
 import React, { useState, useEffect } from 'react'
+import json2csv from 'json2csv';
+import FileSaver from 'file-saver';
 import axios from "axios"
 
 import './pages.css'
@@ -7,7 +9,7 @@ export const ManagePage = (props) => {
 
     const [logData, setLogData] = useState([[{'id': '', 'input': '', 'output': '', 'ambiguous':''}]]);
     const [activityData, setActivityData] = useState([[{'id': ''}]]);
-
+    
     // get profile data from server
     function getData() {
         axios({
@@ -52,9 +54,21 @@ export const ManagePage = (props) => {
         getData()
       }, []);
 
+    function setCSV () {
+        let lcsv = json2csv.parse(logData);
+        let acsv = json2csv.parse(activityData);
+        let lb = new Blob([lcsv], { type: 'text/csv;charset=utf-8;' });
+        let ab = new Blob([acsv], { type: 'text/csv;charset=utf-8;' });
+        FileSaver.saveAs(lb, 'logData.csv');
+        FileSaver.saveAs(ab, 'activityData.csv');
+    }
+
     return(
         <>
             <div className='managepage'>
+                <div>
+                    <button onClick={setCSV}>get Data</button>
+                </div>
                 {logData.map(userInfo => (
                 <div className='userLog' key = {userInfo}>
                     <table className='userTable'><tbody>
