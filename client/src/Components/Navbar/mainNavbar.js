@@ -26,11 +26,11 @@ export const MainNavbar = (props) => {
             <nav className='mainNavbar'>
                 <div className='navbarContainer'>
                     <div className='title'> 
-                        스테레오 헌터
+                        STEREOHUNTER
                     </div>
                     <div className='navbarInfo'>
                         <div className='userName'>
-                            {props.name} 님
+                            Hello! {props.name}
                         </div>
                         <button className='submitBtn' onClick={logout}> logout </button>                              
                     </div>

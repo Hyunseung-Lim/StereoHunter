@@ -7,11 +7,17 @@ from datetime import datetime, timedelta, timezone
 from __init__ import create_app, db
 from models import User, Log, Activity
 from datetime import datetime
-import base64
 import json
 import os
 import http.client
+from dotenv import load_dotenv
 
+load_dotenv()
+
+HOST            = os.getenv("API_HOST")
+API_KEY         = os.getenv("API_KEY")
+API_KEY_PRIMARY = os.getenv("API_KEY_PRIMARY_VAL")
+REQUEST_ID      = os.getenv("REQUEST_ID")
 
 
 main = Blueprint('main', __name__)
@@ -47,14 +53,14 @@ class CompletionExecutor:
             return '에러가 발생했습니다. 다시 시도해주세요.'
 
 completion_executor = CompletionExecutor(
-        host='clovastudio.apigw.ntruss.com',
-        api_key='NTA0MjU2MWZlZTcxNDJiYxA8y9c0sJXEP022bmhK5C7k3nLxoLyC8zZBnZhiMcSP0dp/w/XwTOR3IYiWVkV2li73JC0wiC2l/BX3w/u8rKNy6U4Xztt5OTkcjAmG3haJPGKxUVU5UHc7u5QZ1WhaghSJeynqseUypkZCZCMxbtwDgspMc4uuisMHPHcSlGQFsIQGJ9uHxDw9fZqvdFFkT4/mvVEEtDF6zEClQq2LH6Y=',
-        api_key_primary_val = '8Fou3JCdJboaIqZtovj3kDRfQ8cq7yJUsAzvGfOd',
-        request_id='0fa5161a209848848b008d6e8db765bf'
-    )
+    host=HOST,
+    api_key=API_KEY,
+    api_key_primary_val=API_KEY_PRIMARY,
+    request_id=REQUEST_ID
+)
 
 
-preset_text = '상황에 맞는 대사 하나를 생성해주세요.\n\n상황: 여자가 화장을 하고 있음 \n대사: 남자친구 만나기 전에 예쁘게 하고 나가야지~\n###\n상황: 아이가 아이스크림을 사고 있음\n대사: 아저씨! 무슨 아이스크림이 제일 맛있나요?\n###\n상황: 조선족이 지하철 1호선을 탔음 \n대사: 아니 왜 이렇게 시끄러워? 음...이건 대체 무슨 냄새지?\n###\n상황: 마을에 수상한 사람이 나타난다는 소문을 들었음\n대사: 그녀석이 자꾸 나타나면 우리 동네 집값이 떨어지고 말거야!\n###\n상황: '
+preset_text = '상황에 맞는 대사 하나를 생성해주세요. 대사의 주체는 누구나 될 수 있으며, 한 문장 가량의 대사를 생성해주세요.\n\n출력은 다음과 같은 양식으로 해주세요.\n\n###\n상황: <사용자 입력 상황> \n 대사: <상황에 적절한 대사>\n\n###\n상황:'
 
 
 @main.route("/signup", methods=['POST'])
@@ -64,17 +70,9 @@ def signup():
     email = params['email']
     name = params['name']
     password = params['password']
-    # photo = request.files["photo"]
     existUser = User.query.filter_by(email=email).first() # if this returns a user, then the email already exists in database
     if existUser: # if a user is found, we want to redirect back to signup page so user can try again
-        # flash('Email address already exists')
         return {"":""}
-    # if photo:
-    #     # uniq_filename = make_unique(photo.filename)
-    #     # photo_path = join(current_app.config['UPLOAD_FOLDER'],"photo",uniq_filename)
-    #     # photo.save(photo_path)       
-    #     pass
-    # else:
     new_user = User(
         email = email,
         name = name,
@@ -82,12 +80,6 @@ def signup():
         realPassword = password
     )
     db.session.add(new_user)
-    # new_activity = Activity(
-    #     user_id = User.query.filter_by(email=email).first().id,
-    #     time = datetime.now(),
-    #     state = 'signUp'
-    # )
-    # db.session.add(new_activity)
     db.session.commit()
     return {"msg": "make account successful"}
     
@@ -148,7 +140,6 @@ def logout():
 def profile():
     user = User.query.filter_by(email=get_jwt_identity()).first()
     name = user.name
-
     logData = []
     logs = Log.query.filter_by(user_id=user.id)
     for log in logs:

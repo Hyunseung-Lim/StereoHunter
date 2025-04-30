@@ -9,13 +9,13 @@
   border: solid 0px;
   padding: 5px 10px;
   font-size: 12px;
-  background-color: #00B7A1;
+  background-color: #357BFB;
   color: white;
   margin: 0 20px;
 }
 
 .submitBtn:hover {
-  background-color: #00A490;
+  background-color: #2768e0;
 }
 
 .mainNavbar {

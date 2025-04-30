@@ -147,7 +147,7 @@
 }
 
 .evaluationBtnHolder > .stereo:hover {
-  background-color: #D6432B;
+  background-color: #2c6de7;
 }
 
 .ambiguousHolder {
@@ -174,7 +174,7 @@
 }
 
 .ambiguousQuestion > button {
-  background-color: #00B7A1;
+  background-color: #357BFB;
   color: white;
   border: 0px;
   font-size: 16px;
@@ -184,7 +184,7 @@
 }
 
 .ambiguousQuestion > button:hover {
-  background-color: #00A490;
+  background-color: #2f6ee3;
 }
 
 .ambiguousQuestion > .unclickable {
@@ -198,51 +198,51 @@
 }
 
 .evaluationBtnHolder > .antiStereo:hover {
-  background-color: #2A6FD6;
+  background-color: #2d6de3;
 }
 
 .stereoChecker > .stereo {
-  background-color: #E8492F;
+  background-color: #357BFB;
   color: white;
 }
 
 .stereoChecker > .stereo:hover {
-  background-color: #D6432B;
+  background-color: #2a6ce5;
 }
 
 .stereoChecker > .neutral {
-  background-color: #30C680;
+  background-color: #357BFB;
   color: white;
 }
 
 .stereoChecker > .neutral:hover {
-  background-color: #29AB6F;
+  background-color: #2e6de1;
 }
 
 
 .stereoChecker > .antiStereo {
-  background-color: #317FF5;
+  background-color: #357BFB;
   color: white;
 }
 
 .stereoChecker > .antiStereo:hover {
-  background-color: #2A6FD6;
+  background-color: #357BFB;
 }
 
 .stereoChecker > .ambiguous {
-  background-color: #F5D633;
+  background-color: #357BFB;
 }
 
 .stereoChecker > .ambiguous:hover {
-  background-color: #DBBF2F;
+  background-color: #2b6ce4;
 }
 
 .stereoChecker > .unrelated {
-  background-color: #DDDDDD;
+  background-color: #357BFB;
 }
 
 .stereoChecker > .unrelated:hover {
-  background-color: #C0C0C0;
+  background-color: #2e6fe9;
 }
 
 .userTable {

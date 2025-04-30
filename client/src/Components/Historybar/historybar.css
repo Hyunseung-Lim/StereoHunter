@@ -60,26 +60,26 @@
 }
 
 .stereo {
-  background-color: #E8492F;
+  background-color: #357BFB;
   color: white;
 }
 
 .neutral {
-  background-color: #30C680;
+  background-color: #357BFB;
   color: white;  
 }
 
 .antiStereo {
-  background-color: #317FF5;
+  background-color: #357BFB;
   color: white;
 }
 
 .ambiguous {
-  background-color: #F5D633;
+  background-color: #357BFB;
 }
 
 .unrelated {
-  background-color: #bbbbbb;
+  background-color: #357BFB;
 }
 
 .history > .dialoge {

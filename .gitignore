@@ -1,3 +1,5 @@
 macenv
 window-venv
 client/package-lock.json
+analysis
+server/.env

@@ -46,12 +46,12 @@
     border: 0px;
 
     font-size: 14px;
-    background-color: #00B7A1;
+    background-color: #357BFB;
     color: white;
 }
 
 .loginBtn:hover {
-    background-color: #00A490;
+    background-color: #2c6de6;
 }
 
 .createAccountbox {
@@ -76,7 +76,7 @@
 
     font-size: 14px;
     font-weight: 700;
-    color: #00B7A1;
+    color: #357BFB;
 }
 
 .signupbox {
