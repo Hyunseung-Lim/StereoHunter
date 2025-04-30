@@ -7,7 +7,7 @@ The system combines a React front-end with a lightweight Python back-end so that
 
 ## 📑 Paper
 
-> **StereoHunter: Capturing User-Perceived Stereotypes in Large Language Models**  
+> **How Do Users Identify and Perceive Stereotypes? Understanding User Perspectives on Stereotypical Biases in Large Language Models**  
 > *The 2025 ACM Conference on Fairness, Accountability, and Transparency (FAccT ’25), Athens, Greece.*  
 > DOI: [10.1145/3715275.3732207](https://doi.org/10.1145/3715275.3732207) – June 23–26, 2025
 
