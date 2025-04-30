@@ -63,7 +63,7 @@ Create a .env file in server/ to override defaults (e.g., OPENAI_API_KEY, PORT).
   address    = {New York, NY, USA},
   url        = {https://doi.org/10.1145/3715275.3732207},
   doi        = {10.1145/3715275.3732207},
-  abstract   = {<insert final abstract text here>},
+  abstract   = {Stereotypical biases in large language models (LLMs) have the potential to result in discriminatory responses, posing harm to users and disrupting interactions. While prior research has predominantly focused on assessing stereotypes in LLMs with fairness metrics, there is a limited understanding of how users identify and perceive stereotypes in LLMs. To address this gap, we introduce StereoHunter, a research probe tool designed to examine how individuals identify and perceive stereotypes by observing interactions in which users elicit stereotypical responses from LLMs. Our findings reveal the nuanced considerations and challenges participants faced when evaluating these stereotypes, which varied based on their backgrounds and preconceptions about LLMs. Based on these insights, we discuss how diverse user perspectives can be reflected in identifying stereotypes and informing fairness metrics for mitigating biases in LLMs.},
   booktitle  = {Proceedings of the 2025 ACM Conference on Fairness, Accountability, and Transparency},
   pages      = {<pp.–pp.>},
   numpages   = {<n>},
