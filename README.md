@@ -55,8 +55,8 @@ Create a .env file in server/ to override defaults (e.g., OPENAI_API_KEY, PORT).
 ## 📊 Citation
 ```bibtex
 @inproceedings{stereohunter2025,
-  title     = {StereoHunter: Capturing User-Perceived Stereotypes in Large Language Models},
-  author    = {First Author and Second Author and others},
+  title     = {How Do Users Identify and Perceive Stereotypes? Understanding User Perspectives on Stereotypical Biases in Large Language Models},
+  author    = {Hyunseung Lim, Dasom Choi, Hwajung Hong},
   booktitle = {Proceedings of the 2025 ACM Conference on Fairness, Accountability, and Transparency (FAccT ’25)},
   year      = {2025},
   doi       = {10.1145/3715275.3732207}
