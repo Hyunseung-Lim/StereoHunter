@@ -54,12 +54,22 @@ Create a .env file in server/ to override defaults (e.g., OPENAI_API_KEY, PORT).
 
 ## 📊 Citation
 ```bibtex
-@inproceedings{stereohunter2025,
-  title     = {How Do Users Identify and Perceive Stereotypes? Understanding User Perspectives on Stereotypical Biases in Large Language Models},
-  author    = {Hyunseung Lim, Dasom Choi, Hwajung Hong},
-  booktitle = {Proceedings of the 2025 ACM Conference on Fairness, Accountability, and Transparency (FAccT ’25)},
-  year      = {2025},
-  doi       = {10.1145/3715275.3732207}
+@inproceedings{10.1145/3715275.3732207,
+  author     = {Lim, Hyunseung and Choi, Dasom and Hong, Hwajung},
+  title      = {How Do Users Identify and Perceive Stereotypes? Understanding User Perspectives on Stereotypical Biases in Large Language Models},
+  year       = {2025},
+  isbn       = {9798400714825},
+  publisher  = {Association for Computing Machinery},
+  address    = {New York, NY, USA},
+  url        = {https://doi.org/10.1145/3715275.3732207},
+  doi        = {10.1145/3715275.3732207},
+  abstract   = {<insert final abstract text here>},
+  booktitle  = {Proceedings of the 2025 ACM Conference on Fairness, Accountability, and Transparency},
+  pages      = {<pp.–pp.>},
+  numpages   = {<n>},
+  keywords   = {AI fairness, stereotype, algorithmic harms, large language model, human-AI interaction},
+  location   = {Athens, Greece},
+  series     = {FAccT '25}
 }
 ```
 
