@@ -1,4 +1,4 @@
-# stereoHunter
+# StereoHunter
 
 **StereoHunter** is an exploratory research probe that captures how real users identify and experience stereotypical biases in Large Language Models (LLMs).  
 The system combines a React front-end with a lightweight Python back-end so that participants can actively elicit and examine stereotypes in real-time model interactions.
