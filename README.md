@@ -16,7 +16,7 @@ The system combines a React front-end with a lightweight Python back-end so that
 ## 🗂️ Repository Layout
 
 ```text
-stereoHunter/
+StereoHunter/
 ├── client/   # React front end
 └── server/   # Python back end
 ```
@@ -29,8 +29,8 @@ stereoHunter/
 ### 1. Clone the repo
 
 ```bash
-git clone https://github.com/your-org/stereoHunter.git
-cd stereoHunter
+git clone https://github.com/your-org/StereoHunter.git
+cd StereoHunter
 ```
 ### 2. Start the client (React)
 
@@ -74,4 +74,4 @@ Create a .env file in server/ to override defaults (e.g., OPENAI_API_KEY, PORT).
 ```
 
 ## 📬 Contact
-Questions or ideas? Reach out to Charlie at charlie9807@kaist.ac.kr.
+Any questions or ideas? Reach out to Hyunseung Lim at charlie9807@kaist.ac.kr.
