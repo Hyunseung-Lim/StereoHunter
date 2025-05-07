@@ -43,8 +43,8 @@ npm start           # runs on http://localhost:3000
 ### 3. Start the server (Python + Flask)
 
 ```bash
-cd server
 pip install -r requirements.txt   # ← make sure to run this first!
+cd server
 python main.py                    # runs on http://localhost:5000
 ```
 Environment variables (optional)
